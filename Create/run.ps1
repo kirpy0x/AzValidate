@@ -79,7 +79,7 @@ div {
 </style>
 <body>
 <center>
-$($Logo)
+<div>$($Logo)</div>
 <title>Identity Confirmation Portal</Title>
 <h3>Confirm an identity by sending a MFA request.</h3>
 

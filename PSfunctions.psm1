@@ -64,20 +64,20 @@ function New-MFARequest {
 
     # Build XML payload for the authentication request.
     $XML = @"
-    <BeginTwoWayAuthenticationRequest>
-    <Version>1.0</Version>
-    <UserPrincipalName>$EmailToPush</UserPrincipalName>
-    <Lcid>en-us</Lcid><AuthenticationMethodProperties xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"><a:KeyValueOfstringstring><a:Key>OverrideVoiceOtp</a:Key><a:Value>false</a:Value></a:KeyValueOfstringstring></AuthenticationMethodProperties><ContextId>69ff05bf-eb61-47f7-a70e-e7d77b6d47d0</ContextId>
-    <SyncCall>true</SyncCall><RequireUserMatch>true</RequireUserMatch><CallerName>radius</CallerName><CallerIP>UNKNOWN:</CallerIP></BeginTwoWayAuthenticationRequest>
-    "@
+<BeginTwoWayAuthenticationRequest>
+<Version>1.0</Version>
+<UserPrincipalName>$EmailToPush</UserPrincipalName>
+<Lcid>en-us</Lcid><AuthenticationMethodProperties xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays"><a:KeyValueOfstringstring><a:Key>OverrideVoiceOtp</a:Key><a:Value>false</a:Value></a:KeyValueOfstringstring></AuthenticationMethodProperties><ContextId>69ff05bf-eb61-47f7-a70e-e7d77b6d47d0</ContextId>
+<SyncCall>true</SyncCall><RequireUserMatch>true</RequireUserMatch><CallerName>radius</CallerName><CallerIP>UNKNOWN:</CallerIP></BeginTwoWayAuthenticationRequest>
+"@
 
     Write-Output "Sending Push to $EmailToPush"
     $obj = Invoke-RestMethod -uri 'https://adnotifications.windowsazure.com/StrongAuthenticationService.svc/Connector/BeginTwoWayAuthentication' -Method POST -Headers $headers -Body $XML -ContentType 'application/xml'
 
-    Write-Output "
-    User: $($Obj.BeginTwoWayAuthenticationResponse.UserPrincipalName)
-    Approved: $($Obj.BeginTwoWayAuthenticationResponse.AuthenticationResult)
-    "
+    #  Write-Output "
+    #  User: $($Obj.BeginTwoWayAuthenticationResponse.UserPrincipalName)
+    #  Approved: $($Obj.BeginTwoWayAuthenticationResponse.AuthenticationResult)
+    #  "
 
     if ($obj.BeginTwoWayAuthenticationResponse.AuthenticationResult -ne $true) {
         return "Authentication failed. does the user have Push/Phone call MFA configured? Errorcode: $($obj.BeginTwoWayAuthenticationResponse.result.value | out-string)"

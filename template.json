@@ -16,30 +16,7 @@
                 "description": "The Service Principal client ID your generated Certificate was associated with."
             }
         },
-        // These options aren't needed. Replaced with Certificate authentication.
-        // "ApplicationSecret": {
-        //     "defaultValue": "LongApplicationSecret",
-        //     "type": "string",
-        //     "metadata": {
-        //         "description": "The Application Secret for your Secure Application Model."
-        //     }
-        // },
-        // "Refreshtoken": {
-        //     "defaultValue": "LongRefreshtoken",
-        //     "type": "string",
-        //     "metadata": {
-        //         "description": "The Refreshtoken for your Secure Application Model."
-        //     }
-        // },
-        // "GeneratedPassword": {
-        //     "defaultValue": "GeneratedPassword",
-        //     "type": "string",
-        //     "metadata": {
-        //         "description": "Enter a generated password here. This password will be used to generate MFA requests."
-        //     }
-        // },
         "Logo": {
-            "defaultValue": "https://google.com/logo.png",
             "type": "string",
             "metadata": {
                 "description": "URL to your logo for branding."
@@ -76,7 +53,7 @@
         "funcAppName": "[toLower(concat(parameters('baseName'), variables('suffix')))]",
         "funcStorageName": "[tolower(concat(substring(parameters('baseName'), 0, min(length(parameters('baseName')),16)), 'stg', variables('suffix')))]",
         "serverFarmName": "[concat(substring(parameters('baseName'), 0, min(length(parameters('baseName')),14)), '-srv-', variables('suffix'))]",
-        // "repoURL": "https://github.com/KelvinTegelaar/AzValidate.git" // Need to replace with our Teams repo
+        "repoURL": "https://github.com/kirpy0x/AzValidate.git"
     },
     "resources": [
         {
@@ -119,18 +96,6 @@
                             "name": "ClientID",
                             "value": "[parameters('ClientID')]"
                         },
-                        // {
-                        //     "name": "ApplicationSecret",
-                        //     "value": "[parameters('ApplicationSecret')]"
-                        // },
-                        // {
-                        //     "name": "RefreshToken",
-                        //     "value": "[parameters('RefreshToken')]"
-                        // },
-                        // {
-                        //     "name": "GeneratedPassword",
-                        //     "value": "[parameters('GeneratedPassword')]"
-                        // },
                         {
                             "name": "Logo",
                             "value": "[parameters('Logo')]"
