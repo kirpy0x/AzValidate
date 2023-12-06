@@ -6,7 +6,7 @@ param($Request, $TriggerMetadata)
 Write-Host "PowerShell HTTP trigger function processed a request."
 
 if (-not [string]::IsNullOrEmpty($ENV:Logo)) {
-  $Logo = "<img src=`"$($ENV:Logo)`" alt=`"Logo`">"
+  $Logo = "<img src=`"$($ENV:Logo)`" alt=`"Logo`" width="260" height="120">"
 }
 else {
   $Logo = ""
@@ -79,7 +79,7 @@ div {
 </style>
 <body>
 <center>
-<div>$($Logo)</div>
+$($Logo)
 <title>Identity Confirmation Portal</Title>
 <h3>Confirm an identity by sending a MFA request.</h3>
 
