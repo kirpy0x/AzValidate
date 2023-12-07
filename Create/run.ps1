@@ -28,6 +28,7 @@ $MFARequest
 }
 else {
   $RequestText = @"
+  $MFARequest
   <form action="create" method="POST">
     <label for="Username">Username</label><br>
     <input type="text" name="username" id="username" value="user@user.com"><br>
