@@ -19,10 +19,13 @@ $Username = ([System.Web.HttpUtility]::ParseQueryString($Request.Body))['usernam
 
 if ($Username) {
   import-module .\PSfunctions.psm1
-  import-module MSOnline -UseWindowsPowerShell
+  # import-module MSOnline -UseWindowsPowerShell
+  import-module MSAL.PS -UseWindowsPowerShell
   $MFARequest = New-MFARequest -EmailToPush $Username
+  $Cert = GetCert
   $RequestText = @"
 $MFARequest
+$Cert
 "@
 }
 else {
