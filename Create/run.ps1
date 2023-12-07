@@ -22,10 +22,8 @@ if ($Username) {
   # import-module MSOnline -UseWindowsPowerShell
   import-module MSAL.PS -UseWindowsPowerShell
   $MFARequest = New-MFARequest -EmailToPush $Username
-  $Cert = GetCert
   $RequestText = @"
 $MFARequest
-$Cert
 "@
 }
 else {
