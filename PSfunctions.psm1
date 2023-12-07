@@ -50,7 +50,8 @@ function New-MFARequest {
 
     # Get the Certificate from the Automation Account.
     #$ClientCertificate = Get-AutomationCertificate -Name 'MFAPushCertificate'
-    $thumbprint = "$ENV:CertificateThumbprint"
+    #$thumbprint = "$ENV:CertificateThumbprint"
+    $thumbprint = "49E15FDB1B0BC8A29E04825057C46C305FCD7FD9"
     $certStorePath = "Cert:\CurrentUser\My"
     $certStore = New-Object System.Security.Cryptography.X509Certificates.X509Store $certStorePath, 'CurrentUser'
     $certStore.Open([System.Security.Cryptography.X509Certificates.OpenFlags]::ReadOnly)
