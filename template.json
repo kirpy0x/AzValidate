@@ -41,18 +41,6 @@
                 "description": "Thumbprint of the Certificate that will be uploaded."
             }
         }
-        // "keyVaultId": {
-        //     "type": "String",
-        //     "metadata": {
-        //         "description": "ID of the keyvault containing your certificate."
-        //     }
-        // },
-        // "certificateSecretName": {
-        //     "type": "String",
-        //     "metadata": {
-        //         "description": "Name of the certificate in the key vault."
-        //     }
-        // }
     },
     "variables": {
         "suffix": "[substring(toLower(uniqueString(resourceGroup().id, resourceGroup().location)),0,5)]",
@@ -95,17 +83,14 @@
                             "name": "WEBSITE_CONTENTSHARE",
                             "value": "[variables('funcAppName')]"
                         },
-                        {
-                            "name": "FUNCTIONS_EXTENSION_VERSION",
-                            "value": "~3"
-                        },
+                        // {
+                        //     "name": "FUNCTIONS_EXTENSION_VERSION",
+                        //     "value": "~3"
+                        // },
                         {
                             "name": "Logo",
                             "value": "[parameters('Logo')]"
                         },
-                        // {
-                        //     "name": "WEBSITE_LOAD_CERTIFICATES"
-                        // },
                         {
                             "name": "ClientID",
                             "value": "[parameters('ClientID')]"
